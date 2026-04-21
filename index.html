@@ -1,405 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CraveGuard App</title>
+    <meta name="description" content="CraveGuard - The mindful pause before you order. A behavioral nutrition app to help you make healthier food choices.">
+    <meta name="theme-color" content="#0b1120">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Optimized lightweight food decision app">
+    <title>CraveGuard | Mindful Nutrition App</title>
+    
+    <!-- Preconnect to external resources for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
 </head>
-
 <body>
-    <div class="app-container">
+    <main class="app-container">
         <!-- HOME SCREEN -->
-        <div class="screen active" id="home-screen">
-            <div class="home-icon">🛡️</div>
+        <section class="screen active" id="home-screen">
+            <div class="home-icon" aria-hidden="true">🛡️</div>
             <h1 class="home-logo">CraveGuard</h1>
             <p class="home-tagline">The mindful pause before you order.</p>
-            <button class="btn btn-primary" onclick="navigate('order-screen')">Start Journey</button>
-        </div>
+            <button class="btn btn-primary" data-action="navigate" data-screen="order-screen">Start Journey</button>
+        </section>
 
         <!-- ORDER SCREEN -->
-        <div class="screen" id="order-screen">
+        <section class="screen" id="order-screen">
             <header>
                 <div class="logo">CraveGuard</div>
-                <div class="stress-indicator">
+                <div class="stress-indicator" role="status">
                     <div class="pulse-dot"></div>
                     High Stress Detected
                 </div>
             </header>
-
-            <div style="padding: 20px; font-weight: 600; font-size: 1.2rem;">Popular Near You</div>
-
-            <div class="food-list">
-                <div class="food-card">
-                    <div class="food-img"
-                        style="background-image:url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
-                    </div>
-                    <div class="food-info">
-                        <div class="food-header"><span class="food-name">Double Cheese Pizza</span><span
-                                class="food-price">₹499</span></div>
-                        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">Loaded with extra
-                            mozzarella and cheddar. Heavy and satisfying.</p>
-                        <button class="btn btn-order" onclick="orderItem('Double Cheese Pizza','499','unhealthy')">Order
-                            Now</button>
-                    </div>
-                </div>
-                <div class="food-card">
-                    <div class="food-img"
-                        style="background-image:url('https://images.unsplash.com/photo-1626700051175-6818013e1d4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
-                    </div>
-                    <div class="food-info">
-                        <div class="food-header"><span class="food-name">Grilled Chicken Wrap</span><span
-                                class="food-price" style="color:var(--success);">₹199</span></div>
-                        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">Whole wheat wrap,
-                            grilled chicken, veggies & yogurt dressing.</p>
-                        <span
-                            style="background:rgba(34,197,94,0.15);color:var(--success);padding:3px 10px;border-radius:20px;font-size:0.75rem;margin-bottom:12px;display:inline-block;">🌿
-                            Healthy</span>
-                        <button class="btn btn-order" onclick="orderItem('Grilled Chicken Wrap','199','healthy')">Order
-                            Now</button>
-                    </div>
-                </div>
-                <div class="food-card">
-                    <div class="food-img"
-                        style="background-image:url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
-                    </div>
-                    <div class="food-info">
-                        <div class="food-header"><span class="food-name">Classic Beef Burger</span><span
-                                class="food-price">₹299</span></div>
-                        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">Juicy patty with bacon
-                            and extra cheese. High in calories.</p>
-                        <button class="btn btn-order" onclick="orderItem('Classic Beef Burger','299','unhealthy')">Order
-                            Now</button>
-                    </div>
-                </div>
-                <div class="food-card">
-                    <div class="food-img"
-                        style="background-image:url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
-                    </div>
-                    <div class="food-info">
-                        <div class="food-header"><span class="food-name">Quinoa Power Bowl</span><span
-                                class="food-price" style="color:var(--success);">₹249</span></div>
-                        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">Quinoa, roasted
-                            chickpeas, avocado, cherry tomatoes & tahini.</p>
-                        <span
-                            style="background:rgba(34,197,94,0.15);color:var(--success);padding:3px 10px;border-radius:20px;font-size:0.75rem;margin-bottom:12px;display:inline-block;">🌿
-                            Healthy</span>
-                        <button class="btn btn-order" onclick="orderItem('Quinoa Power Bowl','249','healthy')">Order
-                            Now</button>
-                    </div>
-                </div>
-                <div class="food-card">
-                    <div class="food-img"
-                        style="background-image:url('https://images.unsplash.com/photo-1576107232684-1279f390859f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
-                    </div>
-                    <div class="food-info">
-                        <div class="food-header"><span class="food-name">Loaded French Fries</span><span
-                                class="food-price">₹199</span></div>
-                        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">Crispy fries topped
-                            with liquid cheese and jalapeños.</p>
-                        <button class="btn btn-order" onclick="orderItem('Loaded French Fries','199','unhealthy')">Order
-                            Now</button>
-                    </div>
-                </div>
-                <div class="food-card">
-                    <div class="food-img"
-                        style="background-image:url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
-                    </div>
-                    <div class="food-info">
-                        <div class="food-header"><span class="food-name">Fresh Garden Salad</span><span
-                                class="food-price" style="color:var(--success);">₹149</span></div>
-                        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">Mixed greens, grilled
-                            paneer, nuts & olive oil dressing.</p>
-                        <span
-                            style="background:rgba(34,197,94,0.15);color:var(--success);padding:3px 10px;border-radius:20px;font-size:0.75rem;margin-bottom:12px;display:inline-block;">🌿
-                            Healthy</span>
-                        <button class="btn btn-order" onclick="orderItem('Fresh Garden Salad','149','healthy')">Order
-                            Now</button>
-                    </div>
-                </div>
-                <div class="food-card">
-                    <div class="food-img"
-                        style="background-image:url('https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
-                    </div>
-                    <div class="food-info">
-                        <div class="food-header"><span class="food-name">Chocolate Lava Cake</span><span
-                                class="food-price">₹249</span></div>
-                        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">Warm molten chocolate
-                            center with vanilla ice cream.</p>
-                        <button class="btn btn-order" onclick="orderItem('Chocolate Lava Cake','249','unhealthy')">Order
-                            Now</button>
-                    </div>
-                </div>
-                <div class="food-card">
-                    <div class="food-img"
-                        style="background-image:url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
-                    </div>
-                    <div class="food-info">
-                        <div class="food-header"><span class="food-name">Oats & Berry Bowl</span><span
-                                class="food-price" style="color:var(--success);">₹179</span></div>
-                        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">Rolled oats with mixed
-                            berries, honey, chia seeds & almonds.</p>
-                        <span
-                            style="background:rgba(34,197,94,0.15);color:var(--success);padding:3px 10px;border-radius:20px;font-size:0.75rem;margin-bottom:12px;display:inline-block;">🌿
-                            Healthy</span>
-                        <button class="btn btn-order" onclick="orderItem('Oats & Berry Bowl','179','healthy')">Order
-                            Now</button>
-                    </div>
-                </div>
-                <div class="food-card">
-                    <div class="food-img"
-                        style="background-image:url('https://images.unsplash.com/photo-1553979459-d2229ba7433b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
-                    </div>
-                    <div class="food-info">
-                        <div class="food-header"><span class="food-name">Fried Chicken Bucket</span><span
-                                class="food-price">₹599</span></div>
-                        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">8-piece crispy fried
-                            chicken with spicy dip.</p>
-                        <button class="btn btn-order"
-                            onclick="orderItem('Fried Chicken Bucket','599','unhealthy')">Order Now</button>
-                    </div>
-                </div>
-                <div class="food-card">
-                    <div class="food-img"
-                        style="background-image:url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
-                    </div>
-                    <div class="food-info">
-                        <div class="food-header"><span class="food-name">Veggie Poke Bowl</span><span class="food-price"
-                                style="color:var(--success);">₹259</span></div>
-                        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">Brown rice, edamame,
-                            avocado & sesame ginger dressing.</p>
-                        <span
-                            style="background:rgba(34,197,94,0.15);color:var(--success);padding:3px 10px;border-radius:20px;font-size:0.75rem;margin-bottom:12px;display:inline-block;">🌿
-                            Healthy</span>
-                        <button class="btn btn-order" onclick="orderItem('Veggie Poke Bowl','259','healthy')">Order
-                            Now</button>
-                    </div>
-                </div>
-                <div class="food-card">
-                    <div class="food-img"
-                        style="background-image:url('https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
-                    </div>
-                    <div class="food-info">
-                        <div class="food-header"><span class="food-name">BBQ Bacon Whopper</span><span
-                                class="food-price">₹349</span></div>
-                        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">Double patty with smoky
-                            BBQ, crispy bacon and onion rings.</p>
-                        <button class="btn btn-order" onclick="orderItem('BBQ Bacon Whopper','349','unhealthy')">Order
-                            Now</button>
-                    </div>
-                </div>
-                <div class="food-card">
-                    <div class="food-img"
-                        style="background-image:url('https://images.unsplash.com/photo-1505576399279-0d94da7340ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')">
-                    </div>
-                    <div class="food-info">
-                        <div class="food-header"><span class="food-name">Smoothie Bowl</span><span class="food-price"
-                                style="color:var(--success);">₹189</span></div>
-                        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">Mango-banana blend with
-                            granola, coconut & fresh fruit.</p>
-                        <span
-                            style="background:rgba(34,197,94,0.15);color:var(--success);padding:3px 10px;border-radius:20px;font-size:0.75rem;margin-bottom:12px;display:inline-block;">🌿
-                            Healthy</span>
-                        <button class="btn btn-order" onclick="orderItem('Smoothie Bowl','189','healthy')">Order
-                            Now</button>
-                    </div>
-                </div>
+            
+            <h2 class="section-title">Popular Near You</h2>
+            
+            <div class="food-list" id="food-list-container">
+                <!-- Dynamically populated by script.js -->
+                <div class="loader">Loading mindful choices...</div>
             </div>
-        </div>
+        </section>
 
         <!-- SCAN SCREEN -->
-        <div class="screen" id="scan-screen">
+        <section class="screen" id="scan-screen">
             <header>
                 <div class="logo">Scanner</div>
             </header>
             <div class="scan-container">
-                <p style="text-align: center; margin-bottom: 16px; color: var(--text-muted);">Point camera at food to
-                    analyze</p>
+                <p class="instruction-text">Point camera at food to analyze</p>
                 <div class="camera-view">
                     <div class="scan-target"></div>
-                    <div class="camera-text">Simulated Camera Feed</div>
+                    <div class="camera-text">Simulated AI Vision Active</div>
                 </div>
                 <button class="btn btn-primary" onclick="scanFood()">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="3"></circle>
-                        <path
-                            d="M19 4h-2l-1-2H8L7 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z">
-                        </path>
-                    </svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19 4h-2l-1-2H8L7 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path></svg>
                     Scan Food
                 </button>
             </div>
-        </div>
+        </section>
 
         <!-- RESULTS SCREEN -->
-        <div class="screen" id="results-screen">
+        <section class="screen" id="results-screen">
             <header>
                 <div class="logo">Analysis Result</div>
-                <button style="background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;"
-                    onclick="navigate('scan-screen')">×</button>
+                <button class="close-btn" data-action="navigate" data-screen="scan-screen" aria-label="Close results">×</button>
             </header>
             <div class="results-container">
-                <div class="detected-item">
-                    <div style="font-size: 3rem; margin-bottom: 10px;">🍔</div>
+                <article class="detected-item">
+                    <div class="emoji-large">🍔</div>
                     <div class="detected-title">Detected: Junk Food</div>
-                    <p style="color: var(--text-main); font-size: 0.9rem;">High calories, saturated fat, and sodium. Not
-                        ideal for current stress levels.</p>
-                </div>
+                    <p class="detected-desc">High calories, saturated fat, and sodium. Not ideal for current stress levels.</p>
+                </article>
 
-                <div style="text-align: left; font-weight: 600; margin-bottom: 16px; margin-left: 8px;">Smart
-                    Alternative</div>
+                <h3 class="subsection-title">Smart Alternative</h3>
 
-                <div class="suggestion-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 12px; text-align: left;">🥗</div>
-                    <h3 style="color: var(--success); text-align: left; margin-bottom: 8px;">Grilled Chicken Salad</h3>
-                    <p style="text-align: left; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Rich
-                        in protein and fiber. Helps reduce cortisol and improves focus.</p>
-                    <button class="btn btn-healthy" onclick="navigate('success-screen')">Accept Healthy
-                        Suggestion</button>
-                </div>
-
-                <button class="btn btn-outline" onclick="navigate('home-screen')">Cancel</button>
+                <article class="suggestion-card">
+                    <div class="emoji-medium">🥗</div>
+                    <h3 class="suggestion-title">Grilled Chicken Salad</h3>
+                    <p class="suggestion-desc">Rich in protein and fiber. Helps reduce cortisol and improves focus.</p>
+                    <button class="btn btn-healthy" data-action="navigate" data-screen="order-screen">Accept Healthy Suggestion</button>
+                </article>
+                
+                <button class="btn btn-outline" data-action="navigate" data-screen="home-screen">Cancel</button>
             </div>
-        </div>
+        </section>
 
 
         <!-- PAYMENT SCREEN -->
-        <div class="screen" id="payment-screen">
+        <section class="screen" id="payment-screen">
             <header>
                 <div class="logo">Payment</div>
-                <button style="background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;"
-                    onclick="navigate('order-screen')">←</button>
+                <button class="back-btn" data-action="navigate" data-screen="order-screen" aria-label="Go back">←</button>
             </header>
-            <div style="padding:20px;flex:1;">
-                <div
-                    style="background:var(--card-bg);border-radius:20px;padding:20px;border:1px solid rgba(255,255,255,0.05);margin-bottom:20px;">
-                    <div style="font-weight:600;margin-bottom:12px;">Order Summary</div>
-                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span id="pay-item-name"
-                            style="color:var(--text-muted);">Item</span><span id="pay-item-price">₹0</span></div>
-                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span
-                            style="color:var(--text-muted);">Delivery Fee</span><span>₹30</span></div>
-                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span
-                            style="color:var(--text-muted);">Platform Fee</span><span>₹5</span></div>
-                    <div style="border-top:1px solid rgba(255,255,255,0.1);margin:12px 0;"></div>
-                    <div style="display:flex;justify-content:space-between;font-weight:700;font-size:1.1rem;">
-                        <span>Total</span><span id="pay-total" style="color:var(--success);">₹0</span>
-                    </div>
+            <div class="payment-body">
+                <div class="summary-card">
+                    <h3 class="card-title">Order Summary</h3>
+                    <div class="summary-row"><span>Item</span><span id="pay-item-name">Item</span></div>
+                    <div class="summary-row"><span>Delivery Fee</span><span>₹30</span></div>
+                    <div class="summary-row"><span>Platform Fee</span><span>₹5</span></div>
+                    <hr class="divider">
+                    <div class="summary-row total"><span>Total</span><span id="pay-total">₹0</span></div>
                 </div>
-                <div style="font-weight:600;margin-bottom:12px;">Payment Method</div>
-                <div id="pay-methods" style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
-                    <label
-                        style="background:var(--card-bg);padding:16px;border-radius:16px;display:flex;align-items:center;gap:12px;cursor:pointer;border:2px solid var(--primary);">
-                        <input type="radio" name="pay" checked
-                            style="accent-color:var(--primary);width:18px;height:18px;">
+                
+                <h3 class="section-title-small">Payment Method</h3>
+                <div class="pay-methods">
+                    <label class="pay-option active">
+                        <input type="radio" name="pay" checked>
                         <span>💳 UPI / Google Pay</span>
                     </label>
-                    <label
-                        style="background:var(--card-bg);padding:16px;border-radius:16px;display:flex;align-items:center;gap:12px;cursor:pointer;border:1px solid rgba(255,255,255,0.1);">
-                        <input type="radio" name="pay" style="accent-color:var(--primary);width:18px;height:18px;">
+                    <label class="pay-option">
+                        <input type="radio" name="pay">
                         <span>💰 Cash on Delivery</span>
                     </label>
-                    <label
-                        style="background:var(--card-bg);padding:16px;border-radius:16px;display:flex;align-items:center;gap:12px;cursor:pointer;border:1px solid rgba(255,255,255,0.1);">
-                        <input type="radio" name="pay" style="accent-color:var(--primary);width:18px;height:18px;">
-                        <span>🏦 Credit / Debit Card</span>
-                    </label>
                 </div>
-                <button class="btn btn-healthy" onclick="placeOrder()">Pay & Place Order</button>
+                <button class="btn btn-healthy" data-action="place-order">Pay & Place Order</button>
             </div>
-        </div>
+        </section>
 
         <!-- ORDER PLACED SCREEN -->
-        <div class="screen" id="order-placed-screen">
+        <section class="screen" id="order-placed-screen">
             <div class="success-content">
-                <div
-                    style="font-size:5rem;margin-bottom:16px;animation:scale-in 0.5s cubic-bezier(0.175,0.885,0.32,1.275);">
-                    🎉</div>
-                <h2 style="font-size:1.8rem;margin-bottom:8px;color:var(--success);">Order Placed!</h2>
-                <p style="color:var(--text-muted);line-height:1.6;margin-bottom:12px;" id="placed-msg">Your Grilled
-                    Chicken Wrap is on its way.</p>
-                <div
-                    style="background:var(--card-bg);border-radius:20px;padding:20px;width:100%;text-align:left;margin-bottom:24px;border:1px solid rgba(255,255,255,0.05);">
-                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span
-                            style="color:var(--text-muted);font-size:0.85rem;">Order ID</span><span
-                            style="font-weight:600;">#CG48291</span></div>
-                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span
-                            style="color:var(--text-muted);font-size:0.85rem;">ETA</span><span
-                            style="font-weight:600;color:var(--success);">25-30 min</span></div>
-                    <div style="display:flex;justify-content:space-between;"><span
-                            style="color:var(--text-muted);font-size:0.85rem;">Status</span><span
-                            style="font-weight:600;color:var(--primary);">Preparing 🍳</span></div>
+                <div class="emoji-huge">🎉</div>
+                <h2 class="success-title">Order Placed!</h2>
+                <p class="success-msg" id="placed-msg">Your healthy choice is on its way.</p>
+                
+                <div class="tracking-card">
+                    <div class="track-row"><span>Order ID</span><strong>#CG48291</strong></div>
+                    <div class="track-row"><span>ETA</span><strong class="success-text">25-30 min</strong></div>
+                    <div class="track-row"><span>Status</span><strong class="primary-text">Preparing 🍳</strong></div>
                 </div>
-                <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:28px;">You saved <strong
-                        style="color:var(--success);">600+ calories</strong> with this smart swap!</p>
-                <button class="btn btn-primary" onclick="navigate('order-screen')">Back to Menu</button>
+                
+                <p class="calorie-info">You saved <strong class="success-text">600+ calories</strong> with this smart swap!</p>
+                <button class="btn btn-primary" data-action="navigate" data-screen="order-screen">Back to Menu</button>
             </div>
-        </div>
+        </section>
 
         <!-- BOTTOM NAVIGATION -->
-        <div class="bottom-nav" id="bottom-nav" style="display: none;">
-            <div class="nav-item active" onclick="switchNav('order-screen', this)">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                </svg>
+        <nav class="bottom-nav" id="bottom-nav">
+            <div class="nav-item" data-action="navigate" data-screen="order-screen">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                 <span>Order</span>
             </div>
-            <div class="nav-item" onclick="switchNav('scan-screen', this)">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="3"></circle>
-                    <path d="M19 4h-2l-1-2H8L7 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z">
-                    </path>
-                </svg>
+            <div class="nav-item" data-action="navigate" data-screen="scan-screen">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19 4h-2l-1-2H8L7 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path></svg>
                 <span>Scan</span>
             </div>
-            <div class="nav-item" onclick="switchNav('home-screen', this)">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                </svg>
+            <div class="nav-item" data-action="navigate" data-screen="home-screen">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 <span>Profile</span>
             </div>
-        </div>
+        </nav>
 
-        <!-- INTERCEPT OVERLAY (unhealthy warning) -->
-        <div class="overlay" id="intercept-overlay">
+        <!-- INTERCEPT OVERLAY -->
+        <div class="overlay" id="intercept-overlay" role="dialog" aria-labelledby="intercept-title">
             <div class="popup">
                 <div class="popup-icon">⚠️</div>
-                <h3 style="font-size:1.8rem;color:#fca5a5;margin-bottom:12px;">Wait! You're stressed.</h3>
-                <p style="color:var(--text-main);line-height:1.5;margin-bottom:16px;">Our sensors detect elevated
-                    stress. <strong id="intercept-item-name">This item</strong> is high in fat and may increase
-                    lethargy.</p>
-                <div
-                    style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);padding:16px;border-radius:16px;margin-bottom:24px;text-align:left;">
-                    <div style="color:var(--success);font-weight:600;font-size:1.1rem;margin-bottom:4px;">🥗 Try a
-                        healthier option instead</div>
-                    <div style="color:var(--text-muted);font-size:0.9rem;">Scroll the menu for 🌿 Healthy tagged items
-                    </div>
+                <h3 id="intercept-title" class="popup-title">Wait! You're stressed.</h3>
+                <p class="popup-desc">Our sensors detect elevated stress. <strong id="intercept-item-name">This item</strong> is high in fat and may increase lethargy.</p>
+                
+                <div class="suggestion-box">
+                    <p class="suggestion-text">🥗 Try a healthier option instead</p>
+                    <p class="sub-text">Scroll the menu for 🌿 Healthy tagged items</p>
                 </div>
-                <button class="btn btn-healthy" style="margin-bottom:12px;" onclick="swapToMenu()">Browse Healthy
-                    Options</button>
-                <button class="btn btn-outline" style="border:none;color:var(--text-muted);"
-                    onclick="ignoreWarning()">Ignore & Order Anyway</button>
+                
+                <button class="btn btn-healthy" data-action="swap-menu">Browse Healthy Options</button>
+                <button class="btn btn-ghost" data-action="ignore-warning">Ignore & Order Anyway</button>
             </div>
         </div>
 
-        <!-- LAST CHANCE POPUP (at payment for unhealthy) -->
-        <div class="overlay" id="lastchance-overlay">
+        <!-- LAST CHANCE POPUP -->
+        <div class="overlay" id="lastchance-overlay" role="dialog">
             <div class="popup">
                 <div class="popup-icon">🤔</div>
-                <h3 style="font-size:1.6rem;color:#fbbf24;margin-bottom:12px;">One last thought...</h3>
-                <p style="color:var(--text-main);line-height:1.5;margin-bottom:24px;">You still have a chance to switch
-                    to a healthier meal. Your body will thank you!</p>
-                <button class="btn btn-healthy" style="margin-bottom:12px;" onclick="lastChanceSwap()">Switch to Healthy
-                    🌿</button>
-                <button class="btn btn-outline" style="border:none;color:var(--text-muted);"
-                    onclick="lastChanceDeny()">No thanks, place my order</button>
+                <h3 class="popup-title">One last thought...</h3>
+                <p class="popup-desc">You still have a chance to switch to a healthier meal. Your body will thank you!</p>
+                
+                <button class="btn btn-healthy" data-action="swap-menu">Switch to Healthy 🌿</button>
+                <button class="btn btn-ghost" data-action="last-chance-deny">No thanks, place order</button>
             </div>
         </div>
-    </div>
+    </main>
+    
+    <script src="script.js"></script>
 </body>
-
 </html>
